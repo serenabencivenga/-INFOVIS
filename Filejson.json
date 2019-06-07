@@ -1,0 +1,160 @@
+[{
+"orizzontale" : 70,
+"verticale": 90,
+"raggio" : 20,
+"spessore" : 1,
+"tonalita" :0.5
+
+},
+{
+"orizzontale" : 110,
+"verticale": 90,
+"raggio" : 10,
+"spessore" : 5,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 170,
+"verticale":90,
+"raggio" : 30,
+"spessore" : 0.1,
+"tonalita" :0.1
+
+},
+{
+"orizzontale" : 250,
+"verticale": 90,
+"raggio" : 35,
+"spessore" : 7,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 320,
+"verticale": 90,
+"raggio" : 10,
+"spessore" : 10,
+"tonalita" :1
+
+},{
+
+"orizzontale" : 70,
+"verticale": 180,
+"raggio" : 10,
+"spessore" : 10,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 170,
+"verticale": 180,
+"raggio" : 40,
+"spessore" : 10,
+"tonalita" :0.5
+
+},
+{
+"orizzontale" : 250,
+"verticale":180,
+"raggio" : 1,
+"spessore" : 10,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 300,
+"verticale": 180,
+"raggio" : 20,
+"spessore" : 0.3,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 350,
+"verticale": 180,
+"raggio" : 10,
+"spessore" : 1,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 70,
+"verticale": 270,
+"raggio" : 15,
+"spessore" : 1,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 150,
+"verticale": 270,
+"raggio" : 35,
+"spessore" : 0.1,
+"tonalita" :0.2
+
+},
+{
+"orizzontale" : 230,
+"verticale":270,
+"raggio" : 10,
+"spessore" : 1,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 280,
+"verticale": 270,
+"raggio" : 5,
+"spessore" : 0.1,
+"tonalita" :0.4
+
+},
+{
+"orizzontale" : 350,
+"verticale": 270,
+"raggio" : 40,
+"spessore" : 1,
+"tonalita" :0.6
+
+},
+{
+"orizzontale" : 70,
+"verticale": 370,
+"raggio" : 10,
+"spessore" : 0.1,
+"tonalita" :0.5
+
+},
+{
+"orizzontale" : 110,
+"verticale": 370,
+"raggio" : 8,
+"spessore" : 0.8,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 170,
+"verticale":370,
+"raggio" : 10,
+"spessore" : 10,
+"tonalita" :40
+
+},
+{
+"orizzontale" : 270,
+"verticale": 370,
+"raggio" : 50,
+"spessore" : 1,
+"tonalita" :1
+
+},
+{
+"orizzontale" : 350,
+"verticale": 370,
+"raggio" : 10,
+"spessore" : 5,
+"tonalita" :1
+
+}]
