@@ -5,6 +5,40 @@ var  number_of_click = 0;
 var altezza =650 ; 
 var larghezza = 1300;
 
+//INIZIO MODIFICHE
+var min_x=100;
+var max_x = 900;
+
+variazione_X= d3.scaleLinear()
+.domain([0,1200])
+.range([min_x,max_x]);
+
+var min_y=100;
+var max_y= 700;
+variazione_Y= d3.scaleLinear()
+.domain([0,800])
+.range([min_y,max_y]);
+
+
+var min_raggio=10;
+var max_raggio= 70;
+variazione_Raggio= d3.scaleLinear()
+.domain([0,800])
+.range([min_raggio,max_raggio]);
+
+var min_Opacita=0.1;
+var max_Opacita= 60;
+variazione_Opacita= d3.scaleLinear()
+.domain([0,100])
+.range([min_Opacita,max_Opacita]);
+
+var min_Spessore=1;
+var max_Spessore= 90;
+variazione_Spessore= d3.scaleLinear()
+.domain([0,100])
+.range([min_Spessore,max_Spessore]);
+
+//FINE MODIFICHE
 function change(data){
 data.forEach(function(elem){
 	// uso una variabile_di_supporto per mantenere il valore di orizzontale che altrimenti 
@@ -20,41 +54,29 @@ data.forEach(function(elem){
 	function assesta_raggio(r) {
    //utilizzo let invece di var in quanto la utilizzo come dichiarazione locale
   let r1;
-  //inizio
-  if (number_of_click == 5||number_of_click == 0){
-   r1 = r
-   ;}else if (number_of_click==1)
+  r1 = variazione_Raggio(r);
+  return r1;
+   }
    
-   {if (r<=1)
-   {
-   r1=r*10;}else{
-   r1=r*2;}}
-   else if (number_of_click==2)
-   
-   {if (r<=1)
-   {
-   r1=r*10;}else{
-   r1=r;}}
-   
-   else{
-   r1= r*0.1;}
-   return r1;}
+function assesta_Opacita(tonalita){
+	let ton;
+	ton=variazione_Opacita(tonalita);
+return ton;}
+
+function assesta_Spessore(bordo){
+	let b;
+	b=variazione_Spessore(bordo);
+return b;}
+
 
 function assestaY(y){
 let y1;
-if(number_of_click == 2)
-{y1 = y*10;}
-
-else{
-y1=y;}
+y1= variazione_Y(y);
 return y1;}
 
 function assestaX(x){
 let x1;
-if(number_of_click == 3)
-{x1 = x*20;}
-else{
-x1=x;}
+x1 = variazione_X(x);
 return x1;}
 var svg = d3.select("#circle")
 	.append("svg")
@@ -67,12 +89,12 @@ var svg = d3.select("#circle")
 	.enter().append("circle")
 	.attr("cx", function(d) { return assestaX(d.orizzontale);})
                 .attr("cy",function(d) { return assestaY(d.verticale);})
-                .attr("r",function(d) { return d.raggio;})
+                .attr("r",function(d) { return assesta_raggio(d.raggio);})
                 .style("fill", "blue")
                 .style("stroke", "black")
-				.style("stroke-width", function(d) { return d.spessore;})
+				.style("stroke-width", function(d) { return assesta_Spessore(d.spessore);})
 				.attr("transform","translate(100,50)")
-                .style("opacity",function(d) { return d.tonalita;});
+                .style("opacity",function(d) { return assesta_Opacita(d.tonalita);});
   
 	function aggiornamento(data){
 	body=d3.select("body");   
@@ -90,9 +112,9 @@ var svg = d3.select("#circle")
                 .attr("r",function(d) { return assesta_raggio(d.raggio);})
                 .style("fill", "blue")
                 .style("stroke", "black")
-				.style("stroke-width", function(d) { return d.spessore;})
+				.style("stroke-width", function(d) { return assesta_Spessore(d.spessore);})
 				.attr("transform","translate(100,50)")
-				.style("opacity",function(d) { return d.tonalita;});
+				.style("opacity",function(d) { return assesta_Opacita(d.tonalita);});
               
      
    if( number_of_click==5)
