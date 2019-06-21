@@ -4,22 +4,92 @@
 var  number_of_click = 0;
 var altezza =650 ; 
 var larghezza = 1300;
+var min_x=0;
+var max_x =1200;
 
-//INIZIO MODIFICHE
-var min_x=100;
-var max_x = 900;
-
+//PRIMO CLICK
 variazione_X= d3.scaleLinear()
-.domain([0,1200])
+.domain([0,400])
 .range([min_x,max_x]);
 
-var min_y=100;
-var max_y= 700;
+var min_y=0;
+var max_y= 600;
 variazione_Y= d3.scaleLinear()
-.domain([0,800])
+.domain([0,600])
 .range([min_y,max_y]);
+////////////
 
 
+//SECONDO CLICK
+var min_y1=0;
+var max_y1= 300;
+variazione_Y1= d3.scaleLinear()
+.domain([0,40])
+.range([min_y1,max_y1]);
+
+var min_x1=0;
+var max_x1= 1000;
+variazione_X1= d3.scaleLinear()
+.domain([0,370])
+.range([min_x1,max_x1]);
+///////////////////
+
+//TERZO CLICK
+var min_y2=10;
+var max_y2= 200;
+variazione_Y2= d3.scaleLinear()
+.domain([0,20])
+.range([min_y2,max_y2]);
+
+var min_x2=0;
+var max_x2= 850;
+variazione_X2= d3.scaleLinear()
+.domain([0,40])
+.range([min_x2,max_x2]);
+////////////////////////
+
+//QUARTO CLICK
+var min_y3=0;
+var max_y3= 50;
+variazione_Y3= d3.scaleLinear()
+.domain([0,1])
+.range([min_y3,max_y3]);
+
+var min_x3=10;
+var max_x3= 650;
+variazione_X3= d3.scaleLinear()
+.domain([0,25])
+.range([min_x3,max_x3]);
+
+var min_raggio3=5;
+var max_raggio3= 10;
+variazione_Raggio3= d3.scaleLinear()
+.domain([0,350])
+.range([min_raggio3,max_raggio3]);
+
+//////////////77
+
+//QUINTI CLICK
+
+
+var min_y4=0;
+var max_y4= 500;
+variazione_Y4= d3.scaleLinear()
+.domain([0,350])
+.range([min_y4,max_y4]);
+
+var min_x4=0;
+var max_x4= 900;
+variazione_X4= d3.scaleLinear()
+.domain([0,10])
+.range([min_x4,max_x4]);
+
+var min_raggio4=5;
+var max_raggio4= 10;
+variazione_Raggio4= d3.scaleLinear()
+.domain([0,350])
+.range([min_raggio3,max_raggio3]);
+////
 var min_raggio=10;
 var max_raggio= 70;
 variazione_Raggio= d3.scaleLinear()
@@ -38,7 +108,7 @@ variazione_Spessore= d3.scaleLinear()
 .domain([0,100])
 .range([min_Spessore,max_Spessore]);
 
-//FINE MODIFICHE
+
 function change(data){
 data.forEach(function(elem){
 	// uso una variabile_di_supporto per mantenere il valore di orizzontale che altrimenti 
@@ -54,7 +124,16 @@ data.forEach(function(elem){
 	function assesta_raggio(r) {
    //utilizzo let invece di var in quanto la utilizzo come dichiarazione locale
   let r1;
+  if(number_of_click==3)
+  {
+  r1 = variazione_Raggio3(r);
+  }else if (number_of_click==4)  
+  {
+  r1 = variazione_Raggio4(r);
+  }else
+  {
   r1 = variazione_Raggio(r);
+  }
   return r1;
    }
    
@@ -69,15 +148,48 @@ function assesta_Spessore(bordo){
 return b;}
 
 
-function assestaY(y){
-let y1;
-y1= variazione_Y(y);
-return y1;}
-
 function assestaX(x){
 let x1;
-x1 = variazione_X(x);
+if(number_of_click==1)
+{
+x1=variazione_X1(x);
+}else
+if(number_of_click==2){
+x1=variazione_X2(x);
+}else 
+if(number_of_click==3){
+x1=variazione_X3(x);
+}else
+if(number_of_click==4){
+x1=variazione_X4(x);
+}
+else{
+x1= variazione_X(x);
+}
 return x1;}
+
+
+
+function assestaY(y){
+
+let y1;
+if(number_of_click ==1){
+y1=variazione_Y1(y);
+}else
+if(number_of_click ==2){
+y1=variazione_Y2(y);
+}
+else
+if(number_of_click ==3){
+y1=variazione_Y3(y);
+}else
+if(number_of_click ==4){
+y1=variazione_Y4(y);
+}else
+{
+y1 = variazione_Y(y);
+}
+return y1;}
 var svg = d3.select("#circle")
 	.append("svg")
 	.attr("width",larghezza)
@@ -93,7 +205,7 @@ var svg = d3.select("#circle")
                 .style("fill", "blue")
                 .style("stroke", "black")
 				.style("stroke-width", function(d) { return assesta_Spessore(d.spessore);})
-				.attr("transform","translate(100,50)")
+				.attr("transform","translate(120,40)")
                 .style("opacity",function(d) { return assesta_Opacita(d.tonalita);});
   
 	function aggiornamento(data){
@@ -113,7 +225,7 @@ var svg = d3.select("#circle")
                 .style("fill", "blue")
                 .style("stroke", "black")
 				.style("stroke-width", function(d) { return assesta_Spessore(d.spessore);})
-				.attr("transform","translate(100,50)")
+				.attr("transform","translate(120,40)")
 				.style("opacity",function(d) { return assesta_Opacita(d.tonalita);});
               
      
